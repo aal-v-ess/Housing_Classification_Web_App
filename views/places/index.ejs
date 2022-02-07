@@ -1,0 +1,117 @@
+<% layout('layouts/boilerplate')%>
+
+    <div id="map" style="width: 100%; height: 500px"></div>
+
+    <div class="card text-dark bg-light border-dark mb-3">
+        <div class="row">
+            <form action="/places" method="GET" class="form-inline">
+
+                <div class="card-header text-white bg-dark">Search Filter</div>
+
+                <div class="card-body">
+                    <h5 class="card-title">Search</h5>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="search">Location, title, city, country...</label>
+                            <input type="text" id="search" placeholder="Type your query..." name="search"
+                                value="<%= query.search %>" class="form-control">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="min">Price Min.</label>
+                            <input type="number" id="min" name="price[min]" min="0" max="10000" step="1"
+                                placeholder="Min" value="<%= query.price ? query.price.min : '' %>"
+                                class="form-control">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="max">Price Max.</label>
+                            <input type="number" id="max" name="price[max]" min="0" max="10000" step="1"
+                                placeholder="Max" value="<%= query.price ? query.price.max : '' %>"
+                                class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">Rating</h5>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" id="zero-stars" value="0" name="avgRating[]" <%=query.avgRating &&
+                            query.avgRating.includes('0') ? 'checked' : '' %>>
+                        <label for="zero-stars"> 0 stars</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" id="one-star" value="1" name="avgRating[]" <%=query.avgRating &&
+                            query.avgRating.includes('1') ? 'checked' : '' %>>
+                        <label for="one-star"> 1 star</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" id="two-stars" value="2" name="avgRating[]" <%=query.avgRating &&
+                            query.avgRating.includes('2') ? 'checked' : '' %>>
+                        <label for="two-stars"> 2 stars</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" id="three-stars" value="3" name="avgRating[]" <%=query.avgRating &&
+                            query.avgRating.includes('3') ? 'checked' : '' %>>
+                        <label for="three-stars"> 3 stars</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" id="four-stars" value="4" name="avgRating[]" <%=query.avgRating &&
+                            query.avgRating.includes('4') ? 'checked' : '' %>>
+                        <label for="four-stars"> 4 stars</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" id="five-stars" value="5" name="avgRating[]" <%=query.avgRating &&
+                            query.avgRating.includes('5') ? 'checked' : '' %>>
+                        <label for="five-stars"> 5 stars</label>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <button type="submit" class="btn btn-primary mb-3">Search</button>
+                    <a href="/places">Reset Form</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <% places.docs.forEach(function(place) {%>
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid" alt="" src="<%=place.images[0].url%>">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= place.title %>
+                        </h5>
+                        <p class="card-text">
+                            <%= place.description %>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <%= place.city + ", " + place.country%>
+                            </small>
+                        </p>
+                        <a class="btn btn-primary" href="/places/<%=place._id%>">View
+                            <%=place.title%>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% });%>
+
+            <% include ../partials/pagination %>
+
+                <script>
+                    const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+                    const places = { features: <%- JSON.stringify(places) %>}
+                </script>
+
+                <script src="/javascripts/clusterMap.js"></script>

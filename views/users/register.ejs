@@ -1,0 +1,147 @@
+<% layout('layouts/boilerplate')%>
+    <div class="container d-flex justify-content-center align-items-center mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 ">
+                <div class="card shadow">
+                    <img src="https://images.unsplash.com/photo-1608071204650-a47757f2afe6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                        alt="Register Picture" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title">Register</h5>
+                        <form action="/register" method="POST" novalidate class="validated-form"
+                            enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label class="form-label" for="username">Username</label>
+                                <input class="form-control" type="text" id="username" name="username" max="20" required
+                                    autofocus>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="form-label" for="firstName">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" max="20"
+                                        placeholder="First name" required>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="lastName">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" max="20"
+                                        placeholder="Last name" required>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label class="form-label" for="bio">Biography</label>
+                                <input class="form-control" type="text" id="bio" min="20" max="500" name="bio"
+                                    placeholder="Something about yourself..." minlength="20" maxlength="500" required>
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    min. 20 max. 500 characters
+                                </small>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="form-label" for="street">Street</label>
+                                    <input type="text" class="form-control" id="street" name="street"
+                                        placeholder="Street" required>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="form-label" for="doorNumber">Door number</label>
+                                    <input type="Number" class="form-control" id="doorNumber" name="doorNumber"
+                                        placeholder="Door number" required>
+                                </div>
+
+                                <div class="col">
+                                    <label class="form-label" for="zipCode">Zip Code</label>
+                                    <input type="text" pattern="^\s*?\d{4}(?:[-\s]\d{3})?\s*?$" class="form-control"
+                                        id="zipCode" name="zipCode" placeholder="Zip Code" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="form-label" for="city">City</label>
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="City"
+                                        max="50" required>
+                                </div>
+
+                                <div class="col">
+                                    <label class="form-label" for="country">Country</label>
+                                    <input type="text" class="form-control" id="country" name="country" max="50"
+                                        placeholder="Country" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="email">Email</label>
+                                <input class="form-control" type="email" id="email" name="email"
+                                    placeholder="user@mail.com" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="phone">Phone number</label>
+                                <input class="form-control" type="tel" minlength="9" maxlength="15" id=" phone"
+                                    name="phone" placeholder="919555333" required>
+                                <small id="Help" class="form-text text-muted">Max. 9 numbers (Area zone not
+                                    required)</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Password</label>
+                                <input class="form-control" type="password" id="password" name="password" minlength="8"
+                                    required>
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    Your password must be min. 8 characters.
+                                </small>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <div class="form-file custom-file">
+                                    <input type="file" class="form-file-input" id="image" name="image">
+                                    <label class="form-file-label" for="image">
+                                        <span class="form-file-text custom-file-label">Choose image(s)...</span>
+                                        <span class="form-file-button">Browse</span>
+                                    </label>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+                            <div class="mb-3">
+                                <label class="form-label" for="adminCode">Admin code (optional)</label>
+                                <input class="form-control" type="password" id="adminCode" name="adminCode"
+                                    placeholder="Admin code">
+                            </div>
+                            <button class="btn btn-success btn-block">Register</button>
+                            <p>Already have an account? <a href="/login>">Login here</a></p>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

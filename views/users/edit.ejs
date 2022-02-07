@@ -1,0 +1,126 @@
+<% layout('layouts/boilerplate')%>
+
+    <div class="container d-flex justify-content-center align-items-center mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 ">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h3 class="card-title">Edit User Profile</h3>
+
+                        <form action="/users/<%=user._id%>?_method=PUT" method="POST" class="validated-form"
+                            enctype="multipart/form-data" novalidate>
+
+                            <div class="row mb-3">
+                                <img src="<%= user.images.secure_url %>"
+                                    alt="<%= currentUser.username %>'s profile image" width="200" height="200"
+                                    class="profile-image">
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="form-label" for="firstName">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName"
+                                        placeholder="<%= user.firstName %>" value="<%= user.firstName %>" required>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="lastName">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName"
+                                        value="<%= user.lastName %>" placeholder="<%= user.lastName %>" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="bio">Biography</label>
+                                <input class="form-control" type="text" id="bio" min="20" max="500" name="bio"
+                                    placeholder="<%= user.bio %>" value="<%= user.bio %>" minlength=" 20"
+                                    maxlength="500" required>
+                                <small id="bioHelpBlock" class="form-text text-muted">
+                                    min. 20 max. 500 characters
+                                </small>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="form-label" for="street">Street</label>
+                                    <input type="text" class="form-control" id="street" name="street"
+                                        placeholder="<%= user.street %>" value="<%= user.street %>" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="form-label" for="doorNumber">Door number</label>
+                                    <input type="text" class="form-control" id="doorNumber" name="doorNumber"
+                                        placeholder="<%= user.doorNumber %>" value="<%= user.doorNumber %>" required>
+                                </div>
+
+                                <div class="col">
+                                    <label class="form-label" for="zipCode">Zip Code</label>
+                                    <input type="text" pattern="^\s*?\d{4}(?:[-\s]\d{3})?\s*?$" class="form-control"
+                                        id="zipCode" name="zipCode" placeholder="<%= user.zipCode %>"
+                                        value="<%= user.zipCode %>" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="form-label" for="city">City</label>
+                                    <input type="text" class="form-control" id="city" name="city"
+                                        placeholder="<%= user.city %>" value="<%= user.city %>" required>
+                                </div>
+
+                                <div class="col">
+                                    <label class="form-label" for="country">Country</label>
+                                    <input type="text" class="form-control" id="country" name="country"
+                                        placeholder="<%= user.country %>" value="<%= user.country %>" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="email">Email</label>
+                                <input class="form-control" type="email" id="email" name="email"
+                                    placeholder="<%= user.email %>" value="<%= user.email %>" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="phone">Phone number</label>
+                                <input class="form-control" type="tel" maxlength="9" id=" phone" name="phone"
+                                    placeholder="<%=user.phone %>" value="<%= user.phone %>" required>
+                                <small id="Help" class="form-text text-muted">Max. 9 numbers</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-file custom-file">
+                                    <input type="file" class="form-file-input" id="image" name="image">
+                                    <label class="form-file-label" for="image">
+                                        <span class="form-file-text custom-file-label">Choose image(s)...</span>
+                                        <span class="form-file-button">Browse</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <% if(!currentUser.isAdmin) { %>
+                                <div class="mb-3">
+                                    <label class="form-label" for="adminCode">Admin code (optional)</label>
+                                    <input class="form-control" type="password" id="adminCode" name="adminCode"
+                                        placeholder="Admin code">
+                                </div>
+
+                                <% } %>
+
+                                    <button class="btn btn-success btn-block">Edit</button>
+
+                                    <a href="/users/<%= user._id%>">Back To Place</a>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,50 @@
+<% layout('layouts/boilerplate')%>
+
+
+    <div class="container ">
+
+
+        <h1>Search Users</h1>
+
+        <!--    <h4>Search Places</h4> -->
+        <div class="mb-3">
+            <form action="/users/" method="GET" class="form-inline">
+                <div class="form-group ">
+                    <input type="text" name="search" placeholder="Type your query..." class="form-control mb-3">
+                    <input type="submit" value="Search" class="btn btn-success">
+                </div>
+            </form>
+        </div>
+
+
+        <% users.docs.forEach(function(user){%>
+
+            <div class="card mb-3">
+                <div class="row">
+                    <div style="height: 100px;" class="col-md-2">
+                        <img class="img-fluid" alt="" height="200" src="<%=user.images.secure_url%>">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= user.username %>
+                            </h5>
+                            <p class="card-text">
+                                <%= user.firstName + " " + user.lastName %>
+                            </p>
+                            <p class="card-text">
+                                <%= user.bio %>
+                            </p>
+                            <a class="btn btn-primary" href="/users/<%=user._id%>">View
+                                <%=user.username%>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% });%>
+
+
+                <% include ../partials/paginationUsers %>
+
+    </div>

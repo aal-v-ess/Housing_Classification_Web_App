@@ -1,0 +1,130 @@
+<% layout('layouts/boilerplate')%>
+    <div class="row">
+        <h1 class="text-center">New Place</h1>
+        <div class="col-6 offset-3">
+            <form action="/places" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="place[title]" placeholder="Title" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label" for="street">Street</label>
+                        <input type="text" class="form-control" id="street" name="place[street]" placeholder="Street"
+                            required>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="doorNumber">Door number</label>
+                        <input type="text" class="form-control" id="doorNumber" name="place[doorNumber]"
+                            placeholder="Door number" required>
+                    </div>
+
+                    <div class="col">
+                        <label class="form-label" for="zipCode">Zip Code</label>
+                        <input type="text" pattern="^\s*?\d{4}(?:[-\s]\d{3})?\s*?$" class="form-control" id="zipCode"
+                            name="place[zipCode]" placeholder="Zip Code" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label" for="city">City</label>
+                        <input type="text" class="form-control" id="city" name="place[city]" placeholder="City"
+                            required>
+                    </div>
+
+                    <div class="col">
+                        <label class="form-label" for="country">Country</label>
+                        <input type="text" class="form-control" id="country" name="place[country]" placeholder="Country"
+                            required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label" for="phone">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="place[phone]"
+                            placeholder="Phone number" required>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="place[email]" placeholder="Email"
+                            required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="price">Average Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input type="number" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                            aria-describedby="price-label" name="place[price]" required>
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="tag">Select a tag to associate with your post</label>
+                    <select name="place[tag]" type="text" id="tag" required>
+                        <option value="Hotel">Hotel</option>
+                        <option value="Motel">Motel</option>
+                        <option value="Hostel">Hostel</option>
+                        <option value="Campground">Campground</option>
+                        <option value="Lodge">Lodge</option>
+                        <option value="Glamping">Glamping</option>
+                        <option value="Guest-House">Guest-House</option>
+                        <option value="Bed & Breakfast">Bed & Breakfast</option>
+                        <option value="Apart-Hotel">Apart-Hotel</option>
+                        <option value="Boutique-Hotel">Boutique-Hotel</option>
+                        <option value="Inn">Inn</option>
+                        <option value="Resort">Resort</option>
+                        <option value="Rural Hotel">Rural Hotel</option>
+                        <option value="Country House">Country House</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="services">Services and/or room features</label>
+                    <textarea class="form-control" type="text" id="services" maxlength="500" name="place[services]"
+                        placeholder="No. of bathrooms/bedrooms, central heating, air conditioning..."
+                        required></textarea>
+                    <small id="Help" class="form-text text-muted">Max. 9 numbers</small>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" maxlength="500"
+                        name="place[description]" placeholder="Description of the expected experience..."
+                        required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="form-file custom-file">
+                        <input type="file" class="form-file-input" id="image" name="image" multiple required>
+                        <label class="form-file-label" for="image">
+                            <span class="form-file-text custom-file-label">Choose image(s)...</span>
+                            <span class="form-file-button">Browse</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <button class="btn btn-success">Add Place</button>
+                </div>
+            </form>
+            <a href="/places">All Places</a>
+        </div>
+    </div>

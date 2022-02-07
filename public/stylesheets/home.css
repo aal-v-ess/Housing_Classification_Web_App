@@ -1,0 +1,56 @@
+body {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://static.onecms.io/wp-content/uploads/sites/28/2019/02/view-from-airplane-window-over-wing-FAKEVIEW0219.jpg");
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+
+
+#landing-header {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    padding-top: 40vh;
+  }
+  
+#landing-header h1 {
+    color: #fff;
+ }
+
+
+
+
+
+
+
+
+.cover-container {
+  max-width: 60vw;
+}
+
+.nav-link {
+    padding: 0.25rem 0;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    margin-left: 1rem;
+    border-bottom: 0.25rem solid transparent;
+}
+
+
+.nav-link.active {
+    color: white;
+    border-bottom-color:white;
+
+}
+
+.btn-secondary, .btn-secondary:hover{
+    color: #333;
+    text-shadow: none;
+}

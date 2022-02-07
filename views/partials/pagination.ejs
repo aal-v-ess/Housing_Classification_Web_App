@@ -1,0 +1,18 @@
+<ul class="pagination justify-content-center">
+    <% if(places.page - 1) { %>
+        <li class="page-link"><a href="<%= paginateUrl %><%= places.page - 1 %>">Prev</a></li>
+        <% } %>
+
+            <% if(places.pages> 1 && places.docs.length){ %>
+                <% for(let i=1; i <=places.pages; i++) { %>
+                    <li class="page-link"><a href="<%= paginateUrl %><%= i %>" <%=i===places.page ? 'style=color:#000;'
+                            : '' %>
+                            ><%= i %></a></li>
+                    <% } %>
+                        <% } %>
+
+                            <% if((places.page + 1) <=places.pages) { %>
+                                <li class="page-link"><a href="<%= paginateUrl %><%= places.page + 1 %>">Next</a></li>
+                                <% } %>
+
+</ul>
